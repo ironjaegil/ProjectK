@@ -13,13 +13,21 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="databaseType" class="com.project.cmd.DataBaseType" p:type="oracle"/>
+	<!-- 오라클쿼리인지 mysql쿼리인지 타입받아서 확인 -->
+	<!-- <bean id="databaseType" class="com.project.cmd.DataBaseType" p:type="oracle"/>
 		<bean id="dataSource"
 			class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 			p:driverClassName="oracle.jdbc.driver.OracleDriver"	
-			p:url="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=106.241.17.244)(PORT=1525)))(CONNECT_DATA=(SERVICE_NAME=solution)(SERVER=DEDICATED)))"
-			p:username="ORACLE_ID_NIE" p:password="intORACLE$$56"/>	
-	
+			p:url="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=orcl)(SERVER=DEDICATED)))"
+			p:username="KH" p:password="1234"/>	-->
+	<bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/>
+        <property name="username" value="KH"/>
+        <property name="password" value="1234"/>
+    </bean>
+
     <!-- mybatis SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>

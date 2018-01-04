@@ -18,9 +18,10 @@
         <tbody>
             <c:forEach items="${memberList}" var="member">
                 <tr>
-                    <td>${member.id}</td>
-                    <td>${member.pw}</td>
-                    <td>${member.name}</td>
+                    <td>${member.ID}</td>
+                    <td>${member.PWD}</td>
+                    <td>${member.NAME}</td>
+                    <td>${member.INDATE}</td>
                 </tr>
             </c:forEach>
         </tbody>

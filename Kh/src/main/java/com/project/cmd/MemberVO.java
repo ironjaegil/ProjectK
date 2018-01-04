@@ -4,8 +4,9 @@ public class MemberVO {
 	
 	//TBL_TEST 컬럼
 	private String ID;
-	private String PW;
+	private String PWD;
 	private String NAME;
+	private String INDATE;
 	
 	public String getID() {
 		return ID;
@@ -13,16 +14,22 @@ public class MemberVO {
 	public void setID(String iD) {
 		ID = iD;
 	}
-	public String getPW() {
-		return PW;
+	public String getPWD() {
+		return PWD;
 	}
-	public void setPW(String pW) {
-		PW = pW;
+	public void setPWD(String pWD) {
+		PWD = pWD;
 	}
 	public String getNAME() {
 		return NAME;
 	}
 	public void setNAME(String nAME) {
 		NAME = nAME;
+	}
+	public String getINDATE() {
+		return INDATE;
+	}
+	public void setINDATE(String iNDATE) {
+		INDATE = iNDATE;
 	}
 }

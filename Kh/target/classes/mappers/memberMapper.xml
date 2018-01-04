@@ -5,7 +5,11 @@
  
 <mapper namespace="com.project.mapper.memberMapper">
 	<select id="selectMember" resultType="memberVO">
-        SELECT ID, PW ,NAME FROM TBL_TEST
+        SELECT  ID, 
+        		PWD,
+        		NAME, 
+        		INDATE 
+          FROM MEMBER
     </select>
 </mapper>
 
