@@ -13,6 +13,7 @@
                 <th>아이디</th>
                 <th>비밀번호</th>
                 <th>이름</th>
+                <th>생성일자</th>
             </tr>
         </thead>
         <tbody>
