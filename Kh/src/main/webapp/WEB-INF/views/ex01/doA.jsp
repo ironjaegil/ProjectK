@@ -7,6 +7,5 @@
 </head>
 <body>
 	<p>Do A 실행.</p>
-	<a href="/ex01/doC">doC Go</a>
 </body>
 </html>

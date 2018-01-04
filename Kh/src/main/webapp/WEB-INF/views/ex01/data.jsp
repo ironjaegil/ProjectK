@@ -10,10 +10,10 @@
     
 </h1>
  
-<P>  data.jsp 실행.... </P>
+<P>  data.jsp 실행. </P>
  
-<%--     <h4>MemberVO 아이디 : ${member.userid }</h4> --%>
-<%--     <h4>MemberVO 비밀번호 : ${member.userpw }</h4> --%>
+    <h4>MemberVO 아이디 : ${member.userid }</h4>
+    <h4>MemberVO 비밀번호 : ${member.userpw }</h4>
  
     <h4>==========================================</h4>
  
