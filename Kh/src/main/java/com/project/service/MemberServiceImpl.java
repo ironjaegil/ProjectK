@@ -1,7 +1,8 @@
 package com.project.service;
  
 import java.util.List;
- 
+import java.util.Map;
+
 import javax.inject.Inject;
  
 import org.springframework.stereotype.Service;
@@ -16,11 +17,10 @@ public class MemberServiceImpl implements MemberService {
     private MemberDAO dao;
     
     @Override
-    public List<MemberVO> selectMember() {
+    public List<MemberVO> selectMember(MemberVO vo) {
  
-        return dao.selectMember();
+        return dao.selectMember(vo);
     }
- 
 }
 
 

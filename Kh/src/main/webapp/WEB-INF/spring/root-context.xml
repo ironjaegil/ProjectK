@@ -20,20 +20,47 @@
 			p:driverClassName="oracle.jdbc.driver.OracleDriver"	
 			p:url="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=orcl)(SERVER=DEDICATED)))"
 			p:username="KH" p:password="1234"/>	-->
-	<bean id="dataSource"
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/>
-        <property name="username" value="KH"/>
-        <property name="password" value="1234"/>
-    </bean>
+			
+<!-- 	<bean id="dataSource" -->
+<!--         class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!--         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> -->
+<!--         <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/> -->
+<!--         <property name="username" value="KH"/> -->
+<!--         <property name="password" value="1234"/> -->
+<!--     </bean> -->
 
-    <!-- mybatis SqlSessionFactoryBean -->
+		<!-- 개발 db test -->
+		<bean id="dataSourceSpied"
+	        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+	        <property name="url" value="jdbc:oracle:thin:@106.241.17.244:1525:solution"/>
+	        <property name="username" value="SSIS_LMX"/>
+	        <property name="password" value="intsystem0423"/>
+	    </bean>
+	    
+		<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+	        <constructor-arg ref="dataSourceSpied" />
+	        <property name="logFormatter">
+	            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+	                <property name="loggingType" value="MULTI_LINE" />
+	                <property name="sqlPrefix" value="SQL         :  "/>
+	            </bean>
+	        </property>
+	    </bean>
+
+    <!-- mybatis SqlSessionFactoryBean 생성-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
+		<!--mybatis-config.xml 파일이 스프링이 동작할 때 같이 동작하도록 설정한것. -->
         <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
         <property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml"></property>
     </bean>
+    
+    <!-- Impl에서 바로 Mapper로 설정 -->
+<!--     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> -->
+<!--        <property name="basePackage" value="jncs.stst.**.service" /> -->
+<!--        <property name="sqlSessionFactoryBeanName" value="sqlSession" />   -->
+<!--     </bean> -->
     
     <!-- mybatis SqlSessionTemplate -->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
@@ -42,6 +69,7 @@
     
     <!-- command -->
     <context:component-scan base-package="com.lmx.cmd.*"/>
+    
     <!-- Service Bean 등록 -->
     <context:component-scan base-package="com.project.dao"></context:component-scan>
     <context:component-scan base-package="com.project.service"></context:component-scan>

@@ -1,6 +1,7 @@
 package com.project.dao;
  
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -19,12 +20,9 @@ public class MemberDAOImpl implements MemberDAO {
     
     private static final String Namespace = "com.project.mapper.memberMapper";
     @Override
-    public List<MemberVO> selectMember() {
-    	System.out.println("aaaaaaaaaaaaaaaa : " + sqlSession);
- 
+    public List<MemberVO> selectMember(MemberVO vo) {
         return sqlSession.selectList(Namespace+".selectMember");
     }
- 
 }
 
 
